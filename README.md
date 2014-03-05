@@ -38,23 +38,21 @@ For part c), we calculate calculate the average response time for each Client th
 
 How each of the individual features of the system is implemented:
 
-![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d3.jpg)
-
 Shadowing
 The diagram below shows a view of the directory that is saved for each RM.
 Each directory saves a master file which contains a pointer to two serialized objects, the shadow_0 and shadow_1, both of these saving the data for the resource manager.
+
+![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d4.jpg)
 
 The created a master file which is a serialized Master file object which contains a pointer to two file: the current shadow file and the old shadow file. 
 Both of these are serialized versions of the RM. This way, if the RM was saving his state on shadow_1 and it crashed ( the information saved is incomplete) , it will recover from the other file shadow_0. There will be no information lost.
 
 
-![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d6.jpg)
-
 Algorithm in case of optimistic concurrency control
 We implemented a Barrier for vote request and decision:
 On commit or abort, the algorithm creates a barrier to simulate multi casting. This barrier creates 3 threads which all send a vote request or decision to all the participants at the same time. This considerably increases the speed of the system and response time of the system since the middleware doesn’t have to wait for the response of some participants in order to send another message.
 
-![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d4.jpg)
+![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d3.jpg)
 
 How you tested the system for correctness:
 We considered the following scenarios: 
