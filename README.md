@@ -1,13 +1,13 @@
-
 This project consisted in implementing a two-phase commit fault tolerant protocol. That is, we implemented commit and abort for any transaction under the assumption that sites do fail. 
 
 Design					
 We made our data persistent by using shadowing. Each resource manager has have two files for the two versions of its data and a master record which are all be located in a specific directory for this RM. At startup of the RM, if the master record file exists, it automatically recovers, otherwise it creates new files and starts as a new RM.
 			
 		
-
+![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/edit/master/d2.jpg)
 The diagram above shows the general architecture of your system
 
+![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/edit/master/d5.jpg)
 The diagram above shows a general view of the our system
 
 We used RMI to communicate between both from the clients to the Middle Ware and from the Middle Ware to the ResourceManagers. The client connects to the MiddleWare instead of directly to Resource Managers.
@@ -37,6 +37,8 @@ For part c), we calculate calculate the average response time for each Client th
 
 
 How each of the individual features of the system is implemented:
+
+![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/edit/master/d3.jpg)
 
 Shadowing
 The diagram below shows a view of the directory that is saved for each RM.
