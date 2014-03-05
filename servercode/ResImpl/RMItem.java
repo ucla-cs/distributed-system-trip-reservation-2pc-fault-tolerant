@@ -1,0 +1,1 @@
+// -------------------------------// adapted from Kevin T. Manley// CSE 593// -------------------------------package ResImpl;import java.io.*;// Resource manager data itempublic abstract class RMItem implements Serializable{    /**	 * 	 */	private static final long serialVersionUID = -1697130999689451522L;	public RMItem() {			super();    }}

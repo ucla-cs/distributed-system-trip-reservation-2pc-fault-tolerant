@@ -1,0 +1,61 @@
+cd $HOME/512/servercode
+
+javac GlobalIdentifiers/*.java LockManager/*.java ResInterface/*.java ResImpl/*.java TransactionManager/*.java MiddleWareInterface/*.java MiddleWareImpl/*.java
+
+##FOR RESOURCEMANAGERS
+
+setenv CLASSPATH $HOME/512/servercode
+
+javac ResInterface/ResourceManager.java
+
+jar cvf ResInterface.jar ResInterface/*.class TransactionManager/*.class
+
+javac ResImpl/*.java
+
+chmod 755 ResInterface/ResourceManager.class
+chmod 755 ResImpl/ResourceManagerImpl.class
+chmod 755 ResInterface.jar
+
+## These 3 must be done on different machines
+
+mimi
+java -Djava.rmi.server.codebase=file:$HOME/512/servercode/ ResImpl.ResourceManagerImpl car
+
+skinner
+java -Djava.rmi.server.codebase=file:$HOME/512/servercode/ ResImpl.ResourceManagerImpl flight
+
+willy
+java -Djava.rmi.server.codebase=file:$HOME/512/servercode/ ResImpl.ResourceManagerImpl room
+
+
+
+##FOR MIDDLEWARE
+
+setenv CLASSPATH $HOME/512/servercode:$HOME/512/servercode/TransactionManager
+
+javac MiddleWareInterface/MiddleWare.java
+
+
+###SHOULD INCLUDE THE EXCEPTIONS IN THE JAR FILE!!!
+jar cvf MiddleWareInterface.jar MiddleWareInterface/*.class TransactionManager/TransactionAbortedException.class TransactionManager/InvalidTransactionException.class
+
+javac MiddleWareImpl/*.java
+
+chmod 755 MiddleWareInterface/MiddleWare.class
+chmod 755 MiddleWareImpl/MiddleWareImpl.class
+chmod 755 MiddleWareInterface.jar
+
+#on willy
+java -Djava.rmi.server.codebase=file:$HOME/512/servercode/ MiddleWareImpl.MiddleWareImpl mimi skinner willy
+
+#For the customer
+
+##SHOULDN'T NEED THE RESINTERFACE NEXT TIME, I COMMENTED IT OUT OF THE CODE
+
+cd $HOME/512/clientsrc
+
+setenv CLASSPATH $HOME/512/clientsrc:$HOME/512/servercode/MiddleWareInterface.jar
+
+javac Client/client.java
+
+java Client.client willy

@@ -1,0 +1,10 @@
+help
+starttransaction
+newcustomerid,0,10
+newcar,0,locationA,2,150
+reservecar,0,10,locationA
+newroom,0,locationA,5,200
+reserveroom,0,10,locationA
+newflight,0,1,10,215
+querycustomer,0,10
+itinerary,0,10,1,locationA,true,true
