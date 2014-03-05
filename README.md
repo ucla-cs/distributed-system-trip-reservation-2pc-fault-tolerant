@@ -52,7 +52,7 @@ Algorithm in case of optimistic concurrency control
 We implemented a Barrier for vote request and decision:
 On commit or abort, the algorithm creates a barrier to simulate multi casting. This barrier creates 3 threads which all send a vote request or decision to all the participants at the same time. This considerably increases the speed of the system and response time of the system since the middleware doesn’t have to wait for the response of some participants in order to send another message.
 
-![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d3.jpg)
+![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d6.jpg)
 
 How you tested the system for correctness:
 We considered the following scenarios: 
