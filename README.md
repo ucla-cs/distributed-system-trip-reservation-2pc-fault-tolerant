@@ -4,10 +4,10 @@ Design
 We made our data persistent by using shadowing. Each resource manager has have two files for the two versions of its data and a master record which are all be located in a specific directory for this RM. At startup of the RM, if the master record file exists, it automatically recovers, otherwise it creates new files and starts as a new RM.
 			
 		
-![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/edit/master/d2.jpg)
+![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d2.jpg)
 The diagram above shows the general architecture of your system
 
-![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/edit/master/d5.jpg)
+![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d5.jpg)
 The diagram above shows a general view of the our system
 
 We used RMI to communicate between both from the clients to the Middle Ware and from the Middle Ware to the ResourceManagers. The client connects to the MiddleWare instead of directly to Resource Managers.
