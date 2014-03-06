@@ -5,10 +5,9 @@ We made our data persistent by using shadowing. Each resource manager has have t
 			
 		
 ![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d2.jpg)
-The diagram above shows the general architecture of your system
 
 ![alt tag](https://raw.github.com/ucla-cs/expedia.com-replica--2pc-fault-tolerant/master/d5.jpg)
-The diagram above shows a general view of the our system
+The diagrams above shows a general view of the our system
 
 We used RMI to communicate between both from the clients to the Middle Ware and from the Middle Ware to the ResourceManagers. The client connects to the MiddleWare instead of directly to Resource Managers.
 
